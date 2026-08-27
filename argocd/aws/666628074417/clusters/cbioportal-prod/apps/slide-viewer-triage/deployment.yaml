@@ -52,8 +52,8 @@ spec:
             capabilities:
               drop:
                 - ALL
-          # Header-source fix c992bcc is pinned to its immutable multi-architecture digest.
-          image: cbioportal/cbioportal-tile-server:main@sha256:75ee97458f5d65f24e4705ede2c01b3d48f0ce5f2199609c5dc12ad2e76f682e
+          # PNA CORS fix dd3ec52 is pinned to its immutable multi-architecture digest.
+          image: cbioportal/cbioportal-tile-server:main@sha256:a3c1db0703058e748e0c62b6901e369a03165519de62e490583263d9ab8d07ec
           imagePullPolicy: Always
           ports:
             - containerPort: 8080

@@ -161,3 +161,6 @@ jobs:
 
       - name: Check WSI routing smoke script
         run: bash -n .github/scripts/smoke_wsi_triage.sh
+
+      - name: Validate immutable beta WSI release and source policy
+        run: python .github/scripts/validate_wsi_beta_release.py

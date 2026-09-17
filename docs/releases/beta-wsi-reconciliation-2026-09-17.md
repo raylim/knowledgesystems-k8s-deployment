@@ -5,7 +5,7 @@ context `cbioportal-msk-666628074417` before selecting source revisions.
 
 | Component | Reconciled revision | Promotion state | Notes |
 | --- | --- | --- | --- |
-| Frontend | `7bd6212dd638fa273939f08f8cabc276164fb135` (`codex/reconcile-beta-frontend`) | Build and publish required | Includes server-side clinical table pagination/sorting, cancer-root filtering, same-origin API routing, an HTTP-compatible dev server default, and the corrected dated/undated pathology-slide timeline behavior. |
+| Frontend | `d5bd7a209f063739f7aca773b0c4f0d69d9894c2` (`codex/reconcile-beta-frontend`) | Build and publish required | Includes server-side clinical table pagination/sorting, cancer-root filtering, same-origin API routing, an HTTP-compatible dev server default, and the corrected dated/undated pathology-slide timeline behavior. |
 | Backend | `c5a6af962f36b75a7a8a1cb1dbd995cc3286f70` (`codex/reconcile-beta-backend-validated`) | Build and publish required | Includes deterministic clinical pagination, ordered sample response keys, sample-bounded molecular reads, and Spotless formatting. |
 | Core importer | `d28e25e3736dd5d447c7e246e4433f9c214a1a3d` (`codex/reconcile-beta-core`) | Source revision ready | Includes native WSI loading, de-identification validation, ClickHouse 3.2 schema alignment, importer error propagation, and derived-table verification before hydration is recorded. |
 | Compose hydration/release gate | `44f23826461ffabe5871acb5d5ad49488c5c8176` (`codex/reconcile-beta-compose`) | Source revision ready | Includes release-gated, study-scoped WSI and molecular hydration with fail-closed completeness checks, exact timeline image membership, and a pinned tile-server checkout. |

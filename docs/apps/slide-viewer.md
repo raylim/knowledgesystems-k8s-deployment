@@ -68,10 +68,13 @@ complete WSI release.
 1. Build and publish the backend and tile-server images, then replace their
    tags in the deployment with exact immutable `image@sha256:<digest>`
    references before promotion.
-2. Build the green ClickHouse database with the WSI access projection and
-   import the complete `meta_wsi.txt`/`data_wsi.txt` snapshots.
+2. During a beta maintenance window, take the portal offline, back up the
+   current ClickHouse database, and import the complete
+   `meta_wsi.txt`/`data_wsi.txt` snapshots for the frozen eligible-study
+   inventory. Dev containers and caches are outside this operation.
 3. Verify WSI row counts, `can_serve_tiles`, projection materialization, and
-   ClickHouse query plans before switching cBioPortal to the green database.
+   ClickHouse query plans before restarting the portal with the updated
+   immutable application artifacts.
 4. Ensure the external `tile-viewer` node group and private configuration are
    available, deploy the tile server, warm representative slides, and monitor
    memory, Redis, and latency dashboards during the canary.

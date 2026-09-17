@@ -9,9 +9,9 @@ context `cbioportal-msk-666628074417` before selecting source revisions.
 | Backend | `c5a6af962f36b75a7a8a1cb1dbd995cc3286f70` (`codex/reconcile-beta-backend-validated`) | Build and publish required | Includes deterministic clinical pagination, ordered sample response keys, sample-bounded molecular reads, and Spotless formatting. |
 | Core importer | `d28e25e3736dd5d447c7e246e4433f9c214a1a3d` (`codex/reconcile-beta-core`) | Source revision ready | Includes native WSI loading, de-identification validation, ClickHouse 3.2 schema alignment, importer error propagation, and derived-table verification before hydration is recorded. |
 | Compose hydration/release gate | `44f23826461ffabe5871acb5d5ad49488c5c8176` (`codex/reconcile-beta-compose`) | Source revision ready | Includes release-gated, study-scoped WSI and molecular hydration with fail-closed completeness checks, exact timeline image membership, and a pinned tile-server checkout. |
-| PDM serving pipeline | `ded6990` (`codex/reconcile-beta-pdm-current`) | Source revision ready | Includes the serving-pipeline lineage and v3 timeline contract requiring sorted, explicit `IMAGE_IDS`. |
+| PDM serving pipeline | `ded699007c758457ac3b3dca5c4dca48417e029a` (`codex/reconcile-beta-pdm-current`) | Source revision ready | Includes the serving-pipeline lineage and v3 timeline contract requiring sorted, explicit `IMAGE_IDS`. |
 | Tile server | `e876b5fad065cf36622af596eee2b0d8356d3c1c` (`codex/reconcile-beta-tile`) | Keep current immutable release | Existing beta tile image is already pinned by digest and passes the serving-contract test suite. |
-| Kubernetes deployment | `02e40b6b` (`codex/reconcile-beta-k8s`) | Update only after image publication | Reconciles current upstream manifests and restores the immutable beta WSI release validator gate. |
+| Kubernetes deployment | `5fd45dae2cbf3e6cd0f599df914f6e964f77371d` (`codex/reconcile-beta-k8s`) | Update only after image publication | Reconciles current upstream manifests and restores the immutable beta WSI release validator gate. |
 
 ## Live identities recorded before reconciliation
 

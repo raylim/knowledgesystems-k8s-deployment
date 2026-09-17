@@ -5,13 +5,13 @@ context `cbioportal-msk-666628074417` before selecting source revisions.
 
 | Component | Reconciled revision | Promotion state | Notes |
 | --- | --- | --- | --- |
-| Frontend | `b913f322b91f17f2802d9bc472711e104de3fda5c` (`codex/reconcile-beta-frontend`) | Build and publish required | Includes server-side clinical table pagination/sorting and cancer-root filtering. Based on the verified beta lineage `18c02c853`. |
-| Backend | `c5a6af962f36b75ac7a8a1cb1dbd995cc3286f70` (`codex/reconcile-beta-backend-validated`) | Build and publish required | Includes deterministic clinical pagination, ordered sample response keys, sample-bounded molecular reads, and Spotless formatting. |
-| Core importer | `52d8b17890bc6cdce0a63eee1fea9ef773c05bc2` (`codex/reconcile-beta-core`) | Source revision ready | Includes native WSI loading, de-identification validation, importer error propagation, and derived-table verification before hydration is recorded. |
-| Compose hydration/release gate | `0fdbd5a863a64696147b400e186a42008414edc4` (`codex/reconcile-beta-compose`) | Source revision ready | Includes release-gated, study-scoped WSI and molecular hydration with fail-closed completeness checks. |
-| PDM serving pipeline | `291c00170366df713496777f96a28a2e7f1c9d80` (`codex/reconcile-beta-pdm-current`) | Source revision ready | Includes fingerprint-bound WSI serving manifest and contract tests. |
+| Frontend | `7bd6212dd638fa273939f08f8cabc276164fb135` (`codex/reconcile-beta-frontend`) | Build and publish required | Includes server-side clinical table pagination/sorting, cancer-root filtering, same-origin API routing, an HTTP-compatible dev server default, and the corrected dated/undated pathology-slide timeline behavior. |
+| Backend | `c5a6af962f36b75a7a8a1cb1dbd995cc3286f70` (`codex/reconcile-beta-backend-validated`) | Build and publish required | Includes deterministic clinical pagination, ordered sample response keys, sample-bounded molecular reads, and Spotless formatting. |
+| Core importer | `d28e25e3736dd5d447c7e246e4433f9c214a1a3d` (`codex/reconcile-beta-core`) | Source revision ready | Includes native WSI loading, de-identification validation, ClickHouse 3.2 schema alignment, importer error propagation, and derived-table verification before hydration is recorded. |
+| Compose hydration/release gate | `44f23826461ffabe5871acb5d5ad49488c5c8176` (`codex/reconcile-beta-compose`) | Source revision ready | Includes release-gated, study-scoped WSI and molecular hydration with fail-closed completeness checks, exact timeline image membership, and a pinned tile-server checkout. |
+| PDM serving pipeline | `ded6990` (`codex/reconcile-beta-pdm-current`) | Source revision ready | Includes the serving-pipeline lineage and v3 timeline contract requiring sorted, explicit `IMAGE_IDS`. |
 | Tile server | `e876b5fad065cf36622af596eee2b0d8356d3c1c` (`codex/reconcile-beta-tile`) | Keep current immutable release | Existing beta tile image is already pinned by digest and passes the serving-contract test suite. |
-| Kubernetes deployment | `3a53db2a07cd22589d6db430ca0b3abcc1d6f9e2` (`codex/reconcile-beta-k8s`) | Update only after image publication | This ledger commit is on top of live beta lineage `1889cade`; it preserves immutable frontend, backend, and tile identities. |
+| Kubernetes deployment | `02e40b6b` (`codex/reconcile-beta-k8s`) | Update only after image publication | Reconciles current upstream manifests and restores the immutable beta WSI release validator gate. |
 
 ## Live identities recorded before reconciliation
 
@@ -21,18 +21,18 @@ context `cbioportal-msk-666628074417` before selecting source revisions.
 - Backend image digest: `sha256:780fa5ec83b26eb5a0634a45a3b0494cc0144645a0683c4b69b210e7e668e9bd`
 - Tile image digest: `sha256:0638d904f004bc0cd2f678869ccc7dab8ec4e092c0b30f9872cb1095b4942197`
 
-The backend and frontend revisions above are new source candidates and do not
-have deployment image digests yet. No Kubernetes image field is changed until
-CI publishes and records those immutable digests.
+The backend and frontend revisions above are source candidates and do not have
+deployment image digests yet. No Kubernetes image field is changed until CI
+publishes and records those immutable digests.
 
 ## Explicitly not promoted
 
-- The dirty frontend WSI/timeline refactor was not copied. The verified beta
-  lineage already contains the intended clinical-event timeline contract and
-  timepoint dependency behavior; the dirty version removed those protections.
-- Local Compose study snapshots, generated `__pycache__` files, and the dirty
-  triage deployment edits were not promoted. They are source-local artifacts or
-  unrelated deployment regressions, not release identities.
-- No live database hydration was run from an unverified or partial bundle. The
-  mskimpact and coad hydration path must use the Compose release gate and its
-  study-scoped manifest before mutating ClickHouse.
+- The frontend WSI/timeline changes are now captured in the verified frontend
+  revision above; they preserve the clinical-event timeline contract while
+  adding the explicit undated-slide fallback.
+- Local Compose study snapshots, generated caches, and dirty triage deployment
+  edits were not promoted. They are source-local artifacts or unrelated
+  deployment regressions, not release identities.
+- No live beta database hydration was run. Dev hydration was completed and
+  verified for both `mskimpact` and `coad_msk_2025`; beta still requires
+  immutable CI-published images and the release-gate manifest before mutation.

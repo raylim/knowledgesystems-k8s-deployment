@@ -5,13 +5,13 @@ context `cbioportal-msk-666628074417` before selecting source revisions.
 
 | Component | Reconciled revision | Promotion state | Notes |
 | --- | --- | --- | --- |
-| Frontend | `b913f322b` (`codex/reconcile-beta-frontend`) | Build and publish required | Includes server-side clinical table pagination/sorting and cancer-root filtering. Based on the verified beta lineage `18c02c853`. |
-| Backend | `c5a6af962f` (`codex/reconcile-beta-backend-validated`) | Build and publish required | Includes deterministic clinical pagination, ordered sample response keys, sample-bounded molecular reads, and Spotless formatting. |
-| Core importer | `52d8b1789` (`codex/reconcile-beta-core`) | Source revision ready | Includes native WSI loading, de-identification validation, importer error propagation, and derived-table verification before hydration is recorded. |
-| Compose hydration/release gate | `0fdbd5a` (`codex/reconcile-beta-compose`) | Source revision ready | Includes release-gated, study-scoped WSI and molecular hydration with fail-closed completeness checks. |
-| PDM serving pipeline | `291c0017` (`codex/reconcile-beta-pdm-current`) | Source revision ready | Includes fingerprint-bound WSI serving manifest and contract tests. |
-| Tile server | `e876b5f` (`codex/reconcile-beta-tile`) | Keep current immutable release | Existing beta tile image is already pinned by digest and passes the serving-contract test suite. |
-| Kubernetes deployment | `1889cade` (`codex/reconcile-beta-k8s`) | Update only after image publication | This is the live beta release lineage and preserves immutable frontend, backend, and tile identities. |
+| Frontend | `b913f322b91f17f2802d9bc472711e104de3fda5c` (`codex/reconcile-beta-frontend`) | Build and publish required | Includes server-side clinical table pagination/sorting and cancer-root filtering. Based on the verified beta lineage `18c02c853`. |
+| Backend | `c5a6af962f36b75ac7a8a1cb1dbd995cc3286f70` (`codex/reconcile-beta-backend-validated`) | Build and publish required | Includes deterministic clinical pagination, ordered sample response keys, sample-bounded molecular reads, and Spotless formatting. |
+| Core importer | `52d8b17890bc6cdce0a63eee1fea9ef773c05bc2` (`codex/reconcile-beta-core`) | Source revision ready | Includes native WSI loading, de-identification validation, importer error propagation, and derived-table verification before hydration is recorded. |
+| Compose hydration/release gate | `0fdbd5a863a64696147b400e186a42008414edc4` (`codex/reconcile-beta-compose`) | Source revision ready | Includes release-gated, study-scoped WSI and molecular hydration with fail-closed completeness checks. |
+| PDM serving pipeline | `291c00170366df713496777f96a28a2e7f1c9d80` (`codex/reconcile-beta-pdm-current`) | Source revision ready | Includes fingerprint-bound WSI serving manifest and contract tests. |
+| Tile server | `e876b5fad065cf36622af596eee2b0d8356d3c1c` (`codex/reconcile-beta-tile`) | Keep current immutable release | Existing beta tile image is already pinned by digest and passes the serving-contract test suite. |
+| Kubernetes deployment | `3a53db2a07cd22589d6db430ca0b3abcc1d6f9e2` (`codex/reconcile-beta-k8s`) | Update only after image publication | This ledger commit is on top of live beta lineage `1889cade`; it preserves immutable frontend, backend, and tile identities. |
 
 ## Live identities recorded before reconciliation
 

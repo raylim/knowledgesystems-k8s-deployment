@@ -109,7 +109,7 @@ spec:
             - name: IMAGE_GIT_SHA
               value: "082c3f77ec7eb091bc4a17b96d89cf6d1618d73c"
             - name: WSI_SERVING_CONTRACT_VERSION
-              value: "wsi-serving-v3"
+              value: "wsi-serving-v4"
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
